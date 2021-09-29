@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.info.AboutFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewDAction"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Wybierz akcje:"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <Spinner
+                android:id="@+id/spinnerDAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewDFirst"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Ile masz alkoholu:"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <EditText
+                android:id="@+id/editTextDFirst"
+                android:layout_width="@dimen/calculator_ed_small_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <Spinner
+                android:id="@+id/spinnerDFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewDAConcentration"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Stężenie alkoholu:"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <EditText
+                android:id="@+id/editTextDAConcentration"
+                android:layout_width="@dimen/calculator_ed_small_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <TextView
+                android:id="@+id/textViewDAConcentrationPercentages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="%"
+                android:textSize="@dimen/calculator_tv_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewDSConcentration"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Stężenie docelowe:"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <EditText
+                android:id="@+id/editTextDSConcentration"
+                android:layout_width="@dimen/calculator_ed_small_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <TextView
+                android:id="@+id/textViewDSConcentrationPercentages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="%"
+                android:textSize="@dimen/calculator_tv_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+
+            android:layout_marginEnd="20dp"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonDCount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:text="Oblicz" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewDSecond"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Dodaj wody:"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <EditText
+                android:id="@+id/editTextDSecond"
+                android:layout_width="@dimen/calculator_ed_medium_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:enabled="false"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <Spinner
+                android:id="@+id/spinnerDSecond"
+                android:layout_width="@dimen/calculator_dilute_spinner_width_unit"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewDThird"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Cały roztwór:"
+                android:textSize="@dimen/calculator_tv_text_size" />
+
+            <EditText
+                android:id="@+id/editTextDThird"
+                android:layout_width="@dimen/calculator_ed_medium_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:enabled="false"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/calculator_et_text_size" />
+
+            <Spinner
+                android:id="@+id/spinnerDThird"
+                android:layout_width="@dimen/calculator_dilute_spinner_width_unit"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/sw_pl_dilute_units"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Polskie jednostki"
+                android:textSize="@dimen/calculator_et_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/sw_eng_dilute_units"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Angielskie jednostki"
+                android:textSize="@dimen/calculator_et_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_more_info"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_more_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Pokaż więcej"
+                android:textSize="20sp"
+                />
+
+            <ImageView
+                android:id="@+id/iv_tv_more_info"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_arrow_down"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/id_tv_dilute_legend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:inputType="textMultiLine"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

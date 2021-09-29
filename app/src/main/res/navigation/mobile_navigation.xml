@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.lesiogotuje.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_calculator"
+        android:name="com.example.lesiogotuje.ui.calculator.CalculatorFragment"
+        android:label="@string/title_calculator"
+        tools:layout="@layout/fragment_calculator" />
+
+    <fragment
+        android:id="@+id/navigation_qr"
+        android:name="com.example.lesiogotuje.ui.qr.QrFragment"
+        android:label="@string/title_qr"
+        tools:layout="@layout/fragment_qr" />
+
+    <fragment
+        android:id="@+id/navigation_info"
+        android:name="com.example.lesiogotuje.ui.info.InfoFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_info" />
+
+    <fragment
+        android:id="@+id/navigation_update"
+        android:name="com.example.lesiogotuje.ui.update.UpdateFragment"
+        android:label="@string/title_update"
+        tools:layout="@layout/fragment_update" />
+
+</navigation>

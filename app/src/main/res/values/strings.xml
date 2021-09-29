@@ -1,0 +1,257 @@
+<resources>
+    <string name="app_name">Lesio Gotuje</string>
+    <string name="title_home">Start</string>
+    <string name="title_calculator">Kalkulator</string>
+    <string name="title_info">Informacje</string>
+    <string name="title_qr">Kod QR</string>
+    <string name="title_update">Aktualizacja</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Ta funkcja zostanie niebawem dodana.</string>
+
+    <string name="tab_text_calc_1">Przelicznik kuchenny</string>
+    <string name="tab_text_calc_2">Rozcień. alkoholu</string>
+    <string name="tab_text_calc_3">Przelicznik Blg</string>
+
+    <string name="tab_text_info_1">O aplikacji</string>
+    <string name="tab_text_info_2">Polityka prywatności</string>
+    <string name="tab_text_info_3">Zasady i warunki</string>
+    <string name="tab_text_info_4">Pomoc</string>
+
+    <string name="tab_text_qr_1">Skaner kodów QR</string>
+    <string name="tab_text_qr_2">Generator kodów QR</string>
+
+
+    <string name="menu_scanner_qr">Kod QR</string>
+    <string name="menu_calculator_culinary">Kalkulator Kulinarny</string>
+    <string name="menu_calculator_dilute">Rozcieńczanie alkoholu</string>
+    <string name="menu_calculator">Przelicznik BLG</string>
+    <string name="menu_about">O aplikacji</string>
+    <string name="menu_help">Pomoc</string>
+    <string name="title_exit">Wyjdź</string>
+
+    <string-array name="ingredients">
+        <item>Bułka tarta</item>
+        <item>Cukier biały</item>
+        <item>Cukier brązowy</item>
+        <item>Cukier puder</item>
+        <item>Cukier wanilinowy</item>
+        <item>Kakao</item>
+        <item>Kasza manna</item>
+        <item>Keczup</item>
+        <item>Kefir</item>
+        <item>Majonez</item>
+        <item>Margaryna</item>
+        <item>Masło</item>
+        <item>Maślanka</item>
+        <item>Mąka pszenna 500</item>
+        <item>Mąka pszenna 750</item>
+        <item>Mąka żytnia 720</item>
+        <item>Mąka żytnia 2000</item>
+        <item>Miód</item>
+        <item>Mleko</item>
+        <item>Musztarda</item>
+        <item>Olej</item>
+        <item>Oliwa</item>
+        <item>Płatki kukurydziane</item>
+        <item>Płatki owsiane</item>
+        <item>Pieprz mielony</item>
+        <item>Ryż biały</item>
+        <item>Ryż brązowy</item>
+        <item>Sól kuchenna</item>
+        <item>Sól gruboziarnista</item>
+        <item>Spirytus</item>
+        <item>Śmietana 12%</item>
+        <item>Śmietana 18%</item>
+        <item>Śmietana 30%</item>
+        <item>Woda</item>
+        <item>Wino</item>
+        <item>Wódka</item>
+    </string-array>
+
+
+    // CULINARY UNITS
+
+    <string-array name="culinary_units">
+        <item>Szczypty</item>
+        <item>Łyżeczki</item>
+        <item>Łyżki</item>
+        <item>Szklanki</item>
+    </string-array>
+
+    // POL UNITS
+
+    <string-array name="pl_units">
+        <item>Gramy</item>
+        <item>Dekagramy</item>
+        <item>Kilogramy</item>
+        <item>Mililitry</item>
+        <item>Litry</item>
+        <item>Szczypty</item>
+        <item>Łyżeczki</item>
+        <item>Łyżki</item>
+        <item>Szklanki</item>
+    </string-array>
+
+    // ENG UNITS
+
+    <string-array name="eng_units">
+        <item>Grany</item>
+        <item>Dramy</item>
+        <item>Uncje</item>
+        <item>Funty</item>
+        <item>Uncje płynu</item>
+        <item>Pinty</item>
+        <item>Kwarty</item>
+        <item>Galony</item>
+        <item>Szczypty</item>
+        <item>Łyżeczki</item>
+        <item>Łyżki</item>
+        <item>Szklanki</item>
+    </string-array>
+
+    // POL-ENG UNITS
+
+    <string-array name="pl_eng_units">
+        <item>Grany</item>
+        <item>Gramy</item>
+        <item>Dramy</item>
+        <item>Dekagramy</item>
+        <item>Uncje</item>
+        <item>Funty</item>
+        <item>Kilogramy</item>
+        <item>Mililitry</item>
+        <item>Uncje płynu</item>
+        <item>Pinty</item>
+        <item>Litry</item>
+        <item>Kwarty</item>
+        <item>Galony</item>
+        <item>Szczypty</item>
+        <item>Łyżeczki</item>
+        <item>Łyżki</item>
+        <item>Szklanki</item>
+    </string-array>
+
+
+    // CULINARY DILUTE UNITS
+    <string-array name="culinary_dilute_units">
+        <item>łyżecz.</item>
+        <item>łyż.</item>
+        <item>szkl.</item>
+    </string-array>
+
+    <string-array name="culinary_dilute_third_unit">
+        <item>łyżecz.</item>
+        <item>łyż.</item>
+        <item>szkl.</item>
+    </string-array>
+
+    // POL DILUTE UNITS
+    <string-array name="pl_dilute_units">
+        <item>ml</item>
+        <item>l</item>
+        <item>g</item>
+        <item>dag</item>
+        <item>kg</item>
+
+        <item>łyżecz.</item>
+        <item>łyż.</item>
+        <item>szkl.</item>
+    </string-array>
+
+    <string-array name="pl_dilute_third_unit">
+        <item>ml</item>
+        <item>l</item>
+
+        <item>łyżecz.</item>
+        <item>łyż.</item>
+        <item>szkl.</item>
+    </string-array>
+
+    // ENG DILUTE UNITS
+    <string-array name="eng_dilute_units">
+        <item>oz(fl)</item>
+        <item>pt</item>
+        <item>qt</item>
+        <item>gal</item>
+
+        <item>gr</item>
+        <item>dr</item>
+        <item>oz</item>
+        <item>lb</item>
+
+        <item>łyżecz.</item>
+        <item>łyż.</item>
+        <item>szkl.</item>
+    </string-array>
+
+    <string-array name="eng_dilute_third_unit">
+        <item>oz(fl)</item>
+        <item>pt</item>
+        <item>qt</item>
+        <item>gal</item>
+
+        <item>łyżecz.</item>
+        <item>łyż.</item>
+        <item>szkl.</item>
+    </string-array>
+
+    // POL-ENG DILUTE UNITS
+    <string-array name="pl_eng_dilute_units">
+        <item>ml</item>
+        <item>oz(fl)</item>
+        <item>pt</item>
+        <item>l</item>
+        <item>qt</item>
+        <item>gal</item>
+
+        <item>gr</item>
+        <item>g</item>
+        <item>dr</item>
+        <item>dag</item>
+        <item>oz</item>
+        <item>lb</item>
+        <item>kg</item>
+
+        <item>łyżecz.</item>
+        <item>łyż.</item>
+        <item>szkl.</item>
+    </string-array>
+
+    <string-array name="pl_eng_dilute_third_unit">
+        <item>ml</item>
+        <item>oz(fl)</item>
+        <item>pt</item>
+        <item>l</item>
+        <item>qt</item>
+        <item>gal</item>
+
+        <item>łyżecz.</item>
+        <item>łyż.</item>
+        <item>szkl.</item>
+    </string-array>
+
+
+
+    <string-array name="dilute_action">
+        <item>Ile wody do alkoholu</item>
+        <item>Ile alkoholu do wody</item>
+        <item>Ile wody i alkoholu do roztworu</item>
+    </string-array>
+
+
+
+    <string-array name="generator_qr">
+        <item>Zwykły tekst</item>
+        <item>Strona internetowa</item>
+        <item>Email</item>
+        <item>Telefon</item>
+    </string-array>
+
+<!--    <item>Treść ze schowka</item>-->
+<!--    <item>Kontakt</item>-->
+<!--    <item>SMS</item>-->
+<!--    <item>Wydarzenie</item>-->
+<!--    <item>Lokalizacja</item>-->
+<!--    <item>WIFI</item>-->
+
+</resources>
