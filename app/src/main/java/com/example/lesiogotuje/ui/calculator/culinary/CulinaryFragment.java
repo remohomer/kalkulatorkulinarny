@@ -161,7 +161,6 @@ public class CulinaryFragment extends Fragment implements AdapterView.OnItemSele
                 Water.getName() + " = <strong>" + Water.getWeightToVolumeRatio() + "</strong>" + "<br>" +
                 Wine.getName() + " = <strong>" + Wine.getWeightToVolumeRatio() + "</strong>" + "<br>" +
                 Vodka.getName() + " = <strong>" + Vodka.getWeightToVolumeRatio() + "</strong>" + "<br>" +
-                "</p>" +
                 "";
 
         ImageView iVMoreInfo;
@@ -180,10 +179,12 @@ public class CulinaryFragment extends Fragment implements AdapterView.OnItemSele
                 public void onClick(View view) {
                     if(tVLegend.getVisibility() == View.GONE) {
                         tVLegend.setVisibility(View.VISIBLE);
+                        tVMoreInfo.setTextColor(0xFFf7466a);
                         tVMoreInfo.setText("Pokaż mniej");
                         iVMoreInfo.setImageResource(R.drawable.ic_arrow_up);
                     } else {
                         tVLegend.setVisibility(View.GONE);
+                        tVMoreInfo.setTextColor(0xFF27aa6d);
                         tVMoreInfo.setText("Pokaż więcej");
                         iVMoreInfo.setImageResource(R.drawable.ic_arrow_down);
                     }
@@ -634,15 +635,15 @@ public class CulinaryFragment extends Fragment implements AdapterView.OnItemSele
 
 
             if (editTextValue.getText().toString().equals("")) {
-                Toast.makeText(getActivity(), "Podaj ilość!",
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Podaj ilość",
+                        Toast.LENGTH_SHORT).show();
 
 
             } else {
                 double value = Double.parseDouble(editTextValue.getText().toString());
                 if (value <= 0) {
-                    Toast.makeText(getActivity(), "Ta ilość jest zbyt mała!",
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ta ilość jest zbyt mała",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     Converter conventer = new Converter(selectedIngredient, value, selectedSourceUnit, selectedDestinyUnit);
                     resultValueEditText.setText(String.valueOf(conventer.calculate()));
@@ -650,8 +651,8 @@ public class CulinaryFragment extends Fragment implements AdapterView.OnItemSele
             }
 
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Niepoprawne dane!",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Niepoprawne dane",
+                    Toast.LENGTH_SHORT).show();
         }
 
     }

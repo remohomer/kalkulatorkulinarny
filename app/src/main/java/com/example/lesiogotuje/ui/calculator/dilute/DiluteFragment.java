@@ -106,10 +106,12 @@ public class DiluteFragment extends Fragment implements AdapterView.OnItemSelect
                 if(tVLegend.getVisibility() == View.GONE) {
                     tVLegend.setVisibility(View.VISIBLE);
                     tVMoreInfo.setText("Pokaż mniej");
+                    tVMoreInfo.setTextColor(0xFFf7466a);
                     iVMoreInfo.setImageResource(R.drawable.ic_arrow_up);
                 } else {
                     tVLegend.setVisibility(View.GONE);
                     tVMoreInfo.setText("Pokaż więcej");
+                    tVMoreInfo.setTextColor(0xFF27aa6d);
                     iVMoreInfo.setImageResource(R.drawable.ic_arrow_down);
                 }
             }
@@ -475,22 +477,22 @@ public class DiluteFragment extends Fragment implements AdapterView.OnItemSelect
             if (editTextDAConcentration.getText().toString().equals("") ||
                     editTextDSConcentration.getText().toString().equals("") ||
                     editTextDFirst.getText().toString().equals("")) {
-                Toast.makeText(getActivity(), "Wypełnij wszystkie pola!",
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Wypełnij wszystkie pola",
+                        Toast.LENGTH_SHORT).show();
             } else {
                 double value = Double.parseDouble(editTextDFirst.getText().toString());
                 double alcoholConcentration = Double.parseDouble(editTextDAConcentration.getText().toString());
                 double solutionConcentration = Double.parseDouble(editTextDSConcentration.getText().toString());
 
                 if (alcoholConcentration <= 0 || solutionConcentration <= 0 || value <= 0) {
-                    Toast.makeText(getActivity(), "Wprowadź dane większe od zera!",
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Wprowadź dane większe od zera",
+                            Toast.LENGTH_SHORT).show();
                 } else if (alcoholConcentration < solutionConcentration) {
-                    Toast.makeText(getActivity(), "Stężenie alkoholu nie może być mniejsze od stężenia roztworu docelowego!",
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Stężenie alkoholu nie może być mniejsze od stężenia roztworu docelowego",
+                            Toast.LENGTH_SHORT).show();
                 } else if (alcoholConcentration > 100 || solutionConcentration > 100) {
-                    Toast.makeText(getActivity(), "Nie ma alkoholu o tak wysokim stężeniu!",
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Nie ma alkoholu o tak wysokim stężeniu",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     Dilute dilute = new Dilute(action, alcoholConcentration, solutionConcentration, value);
 
@@ -546,8 +548,8 @@ public class DiluteFragment extends Fragment implements AdapterView.OnItemSelect
             }
 
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Wprowadź poprawne dane!",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Wprowadź poprawne dane",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 

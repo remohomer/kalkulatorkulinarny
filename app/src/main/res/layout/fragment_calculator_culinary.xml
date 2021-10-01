@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,7 +106,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:orientation="horizontal">
@@ -116,6 +116,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
+                android:padding="@dimen/button_padding_medium"
+                android:backgroundTint="@color/pink"
                 android:text="Oblicz" />
 
 
@@ -198,28 +200,27 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="Pokaż więcej"
-                android:textSize="20sp"
-                />
+                android:textColor="@color/green"
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/iv_tv_more_info"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_arrow_down"
-                />
+                android:src="@drawable/ic_arrow_down" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/id_tv_legend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
             android:inputType="textMultiLine"
             android:textSize="15sp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

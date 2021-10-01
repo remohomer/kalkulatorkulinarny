@@ -75,6 +75,11 @@ public class AboutFragment extends Fragment {
                 "<h2>POLITYKA PRYWATNOŚCI</h2>" +
                 "<br>" +
                 "<p>Podczas korzystania z naszej aplikacji obowiązuje Polityka Prywatności oraz Zasady i Warunki strony LesioGotuje.pl.</p>" +
+                "<br>" +
+                "<br>" +
+                "<h2>PODZIĘKOWANIA</h2>" +
+                "<br>" +
+                "<p>Dziękujemy Ci za pobranie naszej aplikacji i życzymy smacznego!</p>" +
                 "";
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

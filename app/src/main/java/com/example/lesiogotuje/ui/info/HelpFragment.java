@@ -43,7 +43,7 @@ public class HelpFragment extends Fragment {
         final String websiteUrl = "https://lesiogotuje.pl/pomoc/";
 
         InternetStatus internetStatus = new InternetStatus(getActivity());
-        if (internetStatus.isOfflineMode()) {
+        if (InternetStatus.isOfflineMode()) {
             OfflineMode offlineMode = new OfflineMode(getActivity(),
                     internetStatus,
                     tvOffline,

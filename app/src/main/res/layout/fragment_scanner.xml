@@ -75,11 +75,11 @@
         android:layout_height="match_parent"
         android:background="@color/green"
         android:padding="20dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
@@ -131,25 +131,25 @@
             android:id="@+id/iv_copy_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/ic_copy"
-            app:layout_constraintTop_toBottomOf="@+id/nsv_result"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nsv_result" />
 
         <TextView
             android:id="@+id/tv_copy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
             android:text="Kopiuj do schowka"
             android:textColor="@color/white"
             android:textSize="14dp"
             android:textStyle="bold"
             android:visibility="visible"
-            app:layout_constraintTop_toBottomOf="@+id/nsv_result"
-            app:layout_constraintStart_toStartOf="@+id/iv_copy_icon" />
+            app:layout_constraintStart_toStartOf="@+id/iv_copy_icon"
+            app:layout_constraintTop_toBottomOf="@+id/nsv_result" />
 
         <ImageView
             android:id="@+id/iv_share_icon"
@@ -158,8 +158,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:src="@drawable/ic_share"
-            app:layout_constraintTop_toBottomOf="@+id/nsv_result"
-            app:layout_constraintEnd_toStartOf="@+id/tv_share" />
+            app:layout_constraintEnd_toStartOf="@+id/tv_share"
+            app:layout_constraintTop_toBottomOf="@+id/nsv_result" />
 
         <TextView
             android:id="@+id/tv_share"
@@ -171,29 +171,180 @@
             android:textColor="@color/white"
             android:textSize="14dp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/nsv_result"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nsv_result" />
 
 
         <Button
             android:id="@+id/bt_cameleon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/allert_button_padding"
             android:backgroundTint="@color/button_dark"
-            android:textColor="@color/white"
+            android:padding="@dimen/button_padding_medium"
             android:text="Otwórz link"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/bt_scan_next" />
 
         <Button
             android:id="@+id/bt_scan_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/allert_button_padding"
             android:backgroundTint="@color/button_dark"
-            android:textColor="@color/green"
+            android:padding="@dimen/button_padding_medium"
             android:text="Skanuj dalej"
+            android:textColor="@color/green"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--  WEBVIEW  -->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <WebView
+            android:id="@+id/id_wv_lg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/id_pb_loading"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="@dimen/fragment_pb_margin_top"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/progress_bg_green"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/id_tv_explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="W trybie offline przeglądanie strony\n LesioGotuje.pl jest wyłączone"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/id_tv_offline" />
+
+        <TextView
+            android:id="@+id/id_tv_offline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OFFLINE"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="75sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/bt_online"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/bt_online"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="80dp"
+            android:backgroundTint="@color/pink"
+            android:padding="@dimen/button_padding_big"
+            android:text="Przełącz na online"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/bt_back_to_scanner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/button_dark"
+            android:padding="@dimen/button_padding_small"
+            android:text="Wróć do skanera"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--  PERMISSSION  -->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_camera_permission"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#c55339"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/qr_wallpaper_green"
+            android:scaleType="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:padding="20dp"
+            android:text="Aby włączyć funkcję skanowania kodów QR potrzebujemy Twojej zgody na używanie kamery"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/bt_permission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/button_dark"
+            android:padding="@dimen/button_padding_medium"
+            android:text="Wyrażam zgodę"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

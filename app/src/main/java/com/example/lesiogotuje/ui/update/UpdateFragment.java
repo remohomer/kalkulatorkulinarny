@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -52,7 +53,7 @@ public class UpdateFragment extends Fragment {
         Button btDownload = binding.downloadButton;
 
         InternetStatus internetStatus = new InternetStatus(getActivity());
-        if (internetStatus.isOfflineMode()) {
+        if (InternetStatus.isOfflineMode()) {
             OfflineMode offlineMode = new OfflineMode(getActivity(),
                     internetStatus,
                     tvOffline,
@@ -69,6 +70,7 @@ public class UpdateFragment extends Fragment {
                 current = info.versionName;
             } catch (Exception e) {
             }
+
             CheckVersion checkVersion = new CheckVersion(getActivity());
             last = checkVersion.getLastVersion();
 
@@ -97,7 +99,6 @@ public class UpdateFragment extends Fragment {
                 });
             } else {
                 textViewVersionAllert.setText("Posiadasz aktualną wersję aplikacji!");
-
                 buttonDownload.setVisibility(View.GONE);
                 imageViewAllert.setImageResource(R.drawable.ic_version_alert_good);
             }

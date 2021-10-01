@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -18,13 +19,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.lesiogotuje.databinding.ActivityMainBinding;
-import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private NavigationView bottomNavigationView;
-    private AppBarConfiguration bottomAppBarConfiguration;
     private long pressTime;
 
     @Override
@@ -33,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.gray_700));
+        }
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -55,13 +58,6 @@ public class MainActivity extends AppCompatActivity {
         pressTime = System.currentTimeMillis();
     }
 
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        closeKeyBoard(this);
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-//        return NavigationUI.navigateUp(navController, bottomAppBarConfiguration)
-//                || super.onSupportNavigateUp();
-//    }
 
     public static void closeKeyBoard(Activity activity) {
         View view = activity.getCurrentFocus();

@@ -20,7 +20,7 @@ public class InternetOffAllertDialog {
                                    InternetStatus internetStatus) {
 
         if (Build.VERSION.SDK_INT <= 23) {
-            Toast.makeText(fragment.getActivity(), "Brak połączenia z internetem uniemożliwia wczytanie tej strony!",
+            Toast.makeText(fragment.getActivity(), "Brak połączenia z internetem uniemożliwia poprawne wczytanie tej strony",
                     Toast.LENGTH_LONG).show();
         } else {
 
@@ -53,7 +53,7 @@ public class InternetOffAllertDialog {
                 @Override
                 public void onClick(View view) {
 
-                    InternetStatus.setOfflineMode(true);
+                    internetStatus.setOfflineMode(true);
                     fragment.getActivity().recreate();
                 }
             });

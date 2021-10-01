@@ -5,26 +5,37 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
+import com.example.lesiogotuje.InternetOffAllertDialog;
+import com.example.lesiogotuje.InternetStatus;
+import com.example.lesiogotuje.LoadWebsite;
+import com.example.lesiogotuje.OfflineMode;
 import com.example.lesiogotuje.R;
 import com.example.lesiogotuje.databinding.FragmentScannerBinding;
+import com.example.lesiogotuje.ui.update.CheckVersion;
 import com.google.zxing.Result;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -43,6 +54,7 @@ public class ScannerFragment extends Fragment {
     private CodeScanner mCodeScanner;
 
     private ConstraintLayout clResult;
+    private ConstraintLayout clCameraPermission;
 
     private ImageView ivTitleIcon;
     private ImageView ivCopyIcon;
@@ -56,6 +68,7 @@ public class ScannerFragment extends Fragment {
 
     private Button btCameleon;
     private Button btScanNext;
+    Button btPermission;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,7 +77,6 @@ public class ScannerFragment extends Fragment {
         binding = FragmentScannerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        clResult = binding.clResult;
 
         ivTitleIcon = binding.ivTitleIcon;
         ivCopyIcon = binding.ivCopyIcon;
@@ -112,7 +124,39 @@ public class ScannerFragment extends Fragment {
                                 btCameleon.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        goToLink(result.getText());
+                                        ConstraintLayout clResult = binding.clWebview;
+                                        final String websiteUrl = "" + result;
+                                        final WebView webViewLG = binding.idWvLg;
+                                        final ProgressBar progressBar = binding.idPbLoading;
+                                        final TextView tvOffline = binding.idTvOffline;
+                                        final TextView tvExplanation = binding.idTvExplanation;
+                                        final Button btOnline = binding.btOnline;
+                                        final Button btBackToScanner = binding.btBackToScanner;
+                                        btBackToScanner.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                clResult.setVisibility(View.GONE);
+                                            }
+                                        });
+                                        clResult.setVisibility(View.VISIBLE);
+
+                                        InternetStatus internetStatus = new InternetStatus(getActivity());
+                                        if (InternetStatus.isOfflineMode()) {
+                                            OfflineMode offlineMode = new OfflineMode(getActivity(),
+                                                    internetStatus,
+                                                    tvOffline,
+                                                    tvExplanation,
+                                                    btOnline,
+                                                    webViewLG,
+                                                    progressBar);
+                                        } else if (internetStatus.getActiveInternetConnection()) {
+                                            LoadWebsite loadWebsite = new LoadWebsite(getActivity(),
+                                                    webViewLG,
+                                                    progressBar,
+                                                    websiteUrl);
+                                        } else {
+                                            InternetOffAllertDialog internetOffAllertDialog = new InternetOffAllertDialog(getParentFragment(), internetStatus);
+                                        }
                                     }
                                 });
                                 tvResult.setText(result.getText());
@@ -137,11 +181,11 @@ public class ScannerFragment extends Fragment {
                             tvTittle.setText("Adres email");
 
                             btCameleon.setText("Wyślij wiadomość email");
-                            btCameleon.setVisibility(View.GONE);
+                            btCameleon.setVisibility(View.VISIBLE);
                             btCameleon.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-
+                                    sendToEmail(result.toString());
                                 }
                             });
                             tvResult.setText(qrStringInterpreter.formatEmail());
@@ -152,11 +196,11 @@ public class ScannerFragment extends Fragment {
                             tvTittle.setText("Numer telefonu");
 
                             btCameleon.setText("Zadzwoń na ten numer");
-                            btCameleon.setVisibility(View.GONE);
+                            btCameleon.setVisibility(View.VISIBLE);
                             btCameleon.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-
+                                    callToPhone(qrStringInterpreter.formatPhone());
                                 }
                             });
                             tvResult.setText(qrStringInterpreter.formatPhone());
@@ -220,44 +264,71 @@ public class ScannerFragment extends Fragment {
                 });
             }
         });
-
         scannerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             }
         });
+
+        if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            mCodeScanner.startPreview();
+        } else {
+            clResult = binding.clResult;
+            clCameraPermission = binding.clCameraPermission;
+            clCameraPermission.setVisibility(View.VISIBLE);
+
+            btPermission = binding.btPermission;
+            btPermission.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requestForCamera();
+                }
+            });
+        }
+
         return root;
     }
+
+
+    private void requestForCamera() {
+
+        if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+            goToApplicationSettings();
+        } else {
+
+            Dexter.withContext(getActivity()).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
+                @Override
+                public void onPermissionGranted(PermissionGrantedResponse response) {
+                    Toast.makeText(getContext(), Html.fromHtml("Zezwolenie udzielone"), Toast.LENGTH_LONG).show();
+                    clCameraPermission.setVisibility(View.GONE);
+                    mCodeScanner.startPreview();
+                }
+
+                @Override
+                public void onPermissionDenied(PermissionDeniedResponse response) {
+                    Toast.makeText(getContext(), Html.fromHtml("Odmowa zezwolenia"), Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                    token.continuePermissionRequest();
+                }
+            }).check();
+        }
+
+    }
+
 
     @Override
     public void onResume() {
         super.onResume();
-        requestForCamera();
+//        requestForCamera();
     }
 
     @Override
     public void onPause() {
         super.onPause();
         mCodeScanner.releaseResources();
-    }
-
-    private void requestForCamera() {
-        Dexter.withActivity(getActivity()).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
-            @Override
-            public void onPermissionGranted(PermissionGrantedResponse response) {
-                mCodeScanner.startPreview();
-            }
-
-            @Override
-            public void onPermissionDenied(PermissionDeniedResponse response) {
-                Toast.makeText(getContext(), Html.fromHtml("Musisz wyrazić zgodę na korzystanie z aparatu, aby używać skanera"), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
-//                token.continuePermissionRequest();
-            }
-        }).check();
     }
 
     @Override
@@ -271,4 +342,18 @@ public class ScannerFragment extends Fragment {
         startActivity(browserIntent);
     }
 
+    private void callToPhone(final String phoneNumber) {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)));
+    }
+
+    private void sendToEmail(final String emailAdress) {
+        startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + emailAdress)));
+    }
+
+    private void goToApplicationSettings() {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
+        intent.setData(uri);
+        startActivity(intent);
+    }
 }
